@@ -1,6 +1,6 @@
+import dotenv from "dotenv";
 import express from "express";
-import jiraRoute from "./jira/route.js";
-import dotenv from 'dotenv';
+import jiraRoute from "./jira/get.js";
 
 dotenv.config();
 
@@ -18,5 +18,5 @@ app.use("/jira", jiraRoute);
 
 // start api
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`)
-})
+  console.log(`Server is running on port ${port}`);
+});
