@@ -4,8 +4,8 @@ const router = express.Router();
 
 const getJira = async (req, res) => {
   try {
-    const { id } = req.params;
-    if (req.action === "getTicket") {
+    const { id, action } = req.query;
+    if (action === "getTicket") {
       const response = await fetch(
         `${process.env.JIRA_DOMAIN_URL}/servicedeskapi/request/${id}`,
         {
@@ -22,7 +22,7 @@ const getJira = async (req, res) => {
 
       const data = await response.json();
       res.status(200).send(data);
-    } else if (req.action === "getStatus") {
+    } else if (action === "getStatus") {
       const response = await fetch(
         `${process.env.JIRA_DOMAIN_URL}/servicedeskapi/request/${id}/status?limit=1`,
         {
